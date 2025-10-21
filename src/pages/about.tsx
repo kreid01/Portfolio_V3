@@ -1,8 +1,10 @@
 import React from "react";
+import Navigation from "../components/Navigation";
 
 const AboutUs: React.FC = () => {
   return (
-    <div className="p-8 text-center">
+    <div className="p-8 text-center w-[100vw] flex flex-col">
+      <Navigation />
       <h1 className="text-4xl font-bold mb-4">About us</h1>
       <p className="text-lg">
         This is the Anout us page content. Lorem ipsum dolor sit amet,

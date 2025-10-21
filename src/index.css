@@ -23,3 +23,7 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
+
+.navigation-item {
+  @apply text-white no-underline px-3 py-2 rounded-md text-sm font-medium hover:underline;
+}
