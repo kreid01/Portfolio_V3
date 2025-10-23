@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Navigation: React.FC = () => {
     return (
-        <nav className="ml-auto">
+        <nav className="ml-auto mr-5">
             <ul className="flex justify-between">
                 <li className="navigation-item">
                     <Link to="/">Home</Link>
