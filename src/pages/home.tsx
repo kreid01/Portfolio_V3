@@ -1,23 +1,23 @@
 import React from "react";
 import Navigation from "../components/Navigation";
-import irithyll from "../assets/irindyll_2.jpeg";
+import { AboutMe } from "../components/AboutMe";
+import { Projects } from "../components/Projects";
+import { Footer } from "../components/Footer";
+
+
 
 const Home: React.FC = () => {
   return (
-    <div className="text-center w-[100vw] flex flex-col">
+    <div className="text-gray-400 text-center w-screen flex flex-col">
       <Navigation />
-
-      <div
-        className="flex items-center justify-center text-lg h-[50vh] bg-cover bg-center"
-        style={{
-          backgroundImage: `url(${irithyll})`,
-        }}
-      >
-        <div className="text-left mr-[30%] text-white">
-          <div className="text-4xl font-bold">Kieran</div>
-          <div className="text-2xl font-medium">Fullstack Developer</div>
+      <div className="px-32 mt-20 flex">
+        <AboutMe />
+        <div>
+          <Projects />
         </div>
       </div>
+
+      <Footer />
     </div>
   );
 };
