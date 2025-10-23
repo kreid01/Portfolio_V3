@@ -10,6 +10,14 @@ export const Footer: React.FC = () => {
             >
                 <i className="fa-brands fa-github"></i>
             </a>
-        </footer>
+
+            <a
+                href="mailto:kieranreid2612@gmail.com"
+                aria-label="Email"
+                className="hover:scale-105 transition-transform ml-5 duration-200"
+            >
+                <i className="fa-solid fa-envelope"></i>
+            </a>
+        </footer >
     );
 };
