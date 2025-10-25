@@ -1,12 +1,17 @@
 import { projects } from "../data/Projects";
 import { Project } from "./Project";
 
-export const Projects: React.FC = () => {
+interface ProjectsProps {
+    onHover: (hovered: boolean) => void;
+}
+
+export const Projects: React.FC<ProjectsProps> = ({ onHover }) => {
     return (
         <div className="flex flex-col items-center gap-2 ml-auto">
             {projects.map((project: Project, index: number) => {
                 const content = (
                     <Project
+                        onHover={onHover}
                         key={index}
                         title={project.title}
                         description={project.description}

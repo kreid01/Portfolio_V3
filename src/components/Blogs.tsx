@@ -19,7 +19,11 @@ const blogs: Blog[] = [
     { title: "Design Systems with Storybook", description: "Building consistent UI components using Storybook.", date: "2026-01-15" },
 ];
 
-export const Blogs = () => {
+interface BlogProps {
+    onHover: (hovered: boolean) => void;
+}
+
+export const Blogs: React.FC<BlogProps> = ({ onHover }) => {
     const mid = Math.ceil(blogs.length / 2);
     const firstHalf = blogs.slice(0, mid);
     const secondHalf = blogs.slice(mid);
@@ -29,6 +33,7 @@ export const Blogs = () => {
             <div className="flex flex-col items-start gap-2">
                 {firstHalf.map((blog, index) => (
                     <Blog
+                        onHover={onHover}
                         key={index}
                         title={blog.title}
                         description={blog.description}
@@ -40,6 +45,7 @@ export const Blogs = () => {
             <div className="flex flex-col items-start mt-10 ml-2 gap-2">
                 {secondHalf.map((blog, index) => (
                     <Blog
+                        onHover={onHover}
                         key={index + mid}
                         title={blog.title}
                         description={blog.description}
