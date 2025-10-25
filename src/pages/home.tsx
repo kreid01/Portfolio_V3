@@ -11,9 +11,9 @@ const Home: React.FC = () => {
   return (
     <div className="text-gray-400 text-center w-screen flex flex-col">
       <Navigation />
-      <div className="px-32 mt-20 flex">
+      <div className="px-32 mt-20  md:flex">
         <AboutMe />
-        <div className="w-[50%]">
+        <div className="md:w-[50%] mt-10 md:mt-0">
           <Projects />
           <Blogs />
         </div>

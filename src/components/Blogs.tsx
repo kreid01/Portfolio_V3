@@ -25,7 +25,7 @@ export const Blogs = () => {
     const secondHalf = blogs.slice(mid);
 
     return (
-        <div className="flex w-full mt-10">
+        <div className="flex xl:flex-row flex-col w-full mt-10">
             <div className="flex flex-col items-start gap-2">
                 {firstHalf.map((blog, index) => (
                     <Blog

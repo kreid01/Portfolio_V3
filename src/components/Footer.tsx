@@ -1,6 +1,6 @@
 export const Footer: React.FC = () => {
     return (
-        <footer className="flex text-3xl text-white fixed bottom-10 left-32">
+        <footer className="flex text-3xl mr-auto ml-10 mt-10 md:mt-0 text-white md:fixed bottom-10 left-32">
             <a
                 href="https://github.com"
                 target="_blank"
