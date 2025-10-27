@@ -1,10 +1,15 @@
 import { useState } from "react";
+import { getFormattedDate } from "../utils/dateUtils";
+import { Id } from "../../convex/_generated/dataModel";
 
 export interface Blog {
     title: string;
     created: string;
     description: string;
+    content?: string;
     link?: string;
+
+    _id?: Id<"blog">;
 }
 
 interface BlogProps extends Blog {
@@ -24,11 +29,6 @@ export const Blog: React.FC<BlogProps> = ({
         setHovered(isHovered);
         onHover(isHovered);
     };
-
-    const getFormattedDate = (dateString: string): string => {
-        const date = new Date(dateString);
-        return `${date.getFullYear()}/${String(date.getMonth() + 1).padStart(2, "0")}/${String(date.getDate()).padStart(2, "0")}`;
-    }
 
     return (
         <div
