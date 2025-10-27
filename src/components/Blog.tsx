@@ -2,7 +2,7 @@ import { useState } from "react";
 
 export interface Blog {
     title: string;
-    date: string;
+    created: string;
     description: string;
     link?: string;
 }
@@ -13,7 +13,7 @@ interface BlogProps extends Blog {
 
 export const Blog: React.FC<BlogProps> = ({
     title,
-    date,
+    created,
     description,
     link,
     onHover,
@@ -25,6 +25,11 @@ export const Blog: React.FC<BlogProps> = ({
         onHover(isHovered);
     };
 
+    const getFormattedDate = (dateString: string): string => {
+        const date = new Date(dateString);
+        return `${date.getFullYear()}/${String(date.getMonth() + 1).padStart(2, "0")}/${String(date.getDate()).padStart(2, "0")}`;
+    }
+
     return (
         <div
             onMouseEnter={() => handleHover(true)}
@@ -33,7 +38,7 @@ export const Blog: React.FC<BlogProps> = ({
                 }`}
         >
             <h3 className="flex uppercase text-xs font-semibold">{title}</h3>
-            <p className="text-gray-300 text-xs">{date}</p>
+            <p className="text-gray-300 text-xs">{getFormattedDate(created)}</p>
             <h2 className="font-bold text-2xl my-2">{description}</h2>
         </div>
     );
