@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { getFormattedDate } from "../utils/dateUtils";
 import { Id } from "../../convex/_generated/dataModel";
+import { useUser } from "@clerk/clerk-react";
 
 export interface Blog {
     title: string;
