@@ -39,7 +39,7 @@ export const Combobox: React.FC<ComboboxProps> = ({ id, label, items, handleChan
                     size={"sm"}
                     role="combobox"
                     aria-expanded={open}
-                    className="w-[200px] justify-between"
+                    className="w-[200px] justify-between dark:text-white text-black"
                 >
                     {value
                         ? items.find((item) => item === value)
