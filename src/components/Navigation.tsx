@@ -8,15 +8,18 @@ const Navigation: React.FC = () => {
     return (
         <nav className="ml-auto mr-5 pt-2 text-black">
             <ul className="flex justify-between">
-                <li className="navigation-item">
-                    <Link to="/">Home</Link>
-                </li>
-                <li className="navigation-item">
-                    <Link to="/blog">Blog</Link>
-                </li>
-                <li className="navigation-item">
-                    <Link to="/projects">Projects</Link>
-                </li>
+                <div className='flex gap-2 mt-2 mr-2'>
+                    <li className="navigation-item">
+                        <Link to="/">Home</Link>
+                    </li>
+                    <li className="navigation-item">
+                        <Link to="/blog">Blog</Link>
+                    </li>
+                    <li className="navigation-item">
+                        <Link to="/projects">Projects</Link>
+                    </li>
+
+                </div>
                 <div className='px-2'>
                     <SignedOut>
                         <Button size={"default"}>
@@ -35,5 +38,7 @@ const Navigation: React.FC = () => {
         </nav >
     );
 };
+
+
 
 export default Navigation;

@@ -34,10 +34,10 @@ interface Job {
 
 export const Job: React.FC<Job> = ({ title, company, dateRange }) => {
     return (
-        <div>
-            <h3 className="text-md uppercase">{company}</h3>
+        <div className="text-black dark:text-white">
+            <h3 className="text-md uppercase ">{company}</h3>
             <h2 className="font-bold text-2xl mb-2">{title}</h2>
-            <p className="text-sm">{dateRange}</p>
+            <p className="text-sm dark:text-gray-200 text-gray-700">{dateRange}</p>
         </div>
     )
 }

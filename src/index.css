@@ -24,11 +24,12 @@
   -webkit-text-size-adjust: 100%;
 }
 
-.navigation-item {
-  @apply no-underline px-3 py-2 rounded-md text-sm font-medium hover:underline;
+
+@layer {
+  .navigation-item {
+    @apply dark:text-white text-black hover:text-primary hover:underline rounded-md text-sm font-medium transition-colors;
+  }
 }
-
-
 
 @layer base {
   :root {

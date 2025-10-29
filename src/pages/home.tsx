@@ -12,7 +12,7 @@ const Home: React.FC = () => {
 
 
   return (
-    <div className="relative h-[100vh]">
+    <div className="relative bg-white dark:bg-zinc-900 h-[100%] pb-40">
       <div className={`fixed inset-0 bg-black transition-opacity z-20 duration-300 pointer-events-none ${hovered ? "opacity-50" : "opacity-0"}`} />
       <div className="text-gray-400 text-center w-screen flex flex-col">
         <Navigation />

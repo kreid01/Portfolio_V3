@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { getFormattedDate } from "../utils/dateUtils";
 import { Id } from "../../convex/_generated/dataModel";
-import { useUser } from "@clerk/clerk-react";
 
 export interface Blog {
     title: string;
@@ -21,7 +20,6 @@ export const Blog: React.FC<BlogProps> = ({
     title,
     created,
     description,
-    link,
     onHover,
 }) => {
     const [hovered, setHovered] = useState(false);
