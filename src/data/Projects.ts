@@ -13,7 +13,7 @@ export const projects: Project[] = [
     },
     {
         title: "Pump Checker",
-        description: "An application to monitor and analyze articially lifted oil well performance in real-time.",
+        description: "An application to monitor and analyze artifically lifted oil well performance in real-time.",
         stack: ["C#", "Typescript", "Vue"]
     },
     {
