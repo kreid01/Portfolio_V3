@@ -8,18 +8,15 @@ const Navigation: React.FC = () => {
     return (
         <nav className="ml-auto mr-5 pt-2 text-black">
             <ul className="flex justify-between">
-                <div className='flex gap-2 mt-2 mr-2'>
+                <div className='flex gap-2 mt-2 mr-4'>
                     <li className="navigation-item">
                         <Link to="/">Home</Link>
                     </li>
                     <li className="navigation-item">
-                        <Link to="/blog">Blog</Link>
+                        <Link to="/blogs">Blog</Link>
                     </li>
-                    <li className="navigation-item">
-                        <Link to="/projects">Projects</Link>
-                    </li>
-
                 </div>
+                <ModeToggle />
                 <div className='px-2'>
                     <SignedOut>
                         <Button size={"default"}>
@@ -31,9 +28,7 @@ const Navigation: React.FC = () => {
                             <UserButton />
                         </Button>
                     </SignedIn>
-
                 </div>
-                <ModeToggle />
             </ul>
         </nav >
     );

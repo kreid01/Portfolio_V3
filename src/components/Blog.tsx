@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { getFormattedDate } from "../utils/dateUtils";
 import { Id } from "../../convex/_generated/dataModel";
+import { Link } from "react-router-dom";
 
 export interface Blog {
     title: string;
@@ -21,6 +22,7 @@ export const Blog: React.FC<BlogProps> = ({
     created,
     description,
     onHover,
+    _id
 }) => {
     const [hovered, setHovered] = useState(false);
 
@@ -30,15 +32,14 @@ export const Blog: React.FC<BlogProps> = ({
     };
 
     return (
-        <div
+        <Link to={`/blog/${_id}`}
             onMouseEnter={() => handleHover(true)}
             onMouseLeave={() => handleHover(false)}
-            className={`bg-stone-800 shadow-md text-white p-10 text-left flex-grow-0 w-full ml-auto transition-transform duration-300 hover:scale-110 ${hovered ? "z-20" : ""
-                }`}
+            className={`bg-stone-800 shadow-md text-white p-10 text-left flex-grow-0 w-full ml-auto transition-transform duration-300 hover:scale-110 ${hovered ? "z-20" : ""}`}
         >
             <h3 className="flex uppercase text-xs font-semibold">{title}</h3>
             <p className="text-gray-300 text-xs">{getFormattedDate(created)}</p>
             <h2 className="font-bold text-2xl my-2">{description}</h2>
-        </div>
+        </Link>
     );
 };

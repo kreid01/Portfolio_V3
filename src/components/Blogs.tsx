@@ -24,6 +24,7 @@ export const Blogs: React.FC<BlogProps> = ({ onHover }) => {
                         title={blog.title}
                         description={blog.description}
                         created={blog.created}
+                        _id={blog._id}
                     />
                 ))}
             </div>
@@ -36,6 +37,7 @@ export const Blogs: React.FC<BlogProps> = ({ onHover }) => {
                         title={blog.title}
                         description={blog.description}
                         created={blog.created}
+                        _id={blog._id}
                     />
                 ))}
             </div>

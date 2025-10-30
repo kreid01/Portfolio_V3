@@ -16,7 +16,7 @@ const Home: React.FC = () => {
       <div className={`fixed inset-0 bg-black transition-opacity z-20 duration-300 pointer-events-none ${hovered ? "opacity-50" : "opacity-0"}`} />
       <div className="text-gray-400 text-center w-screen flex flex-col">
         <Navigation />
-        <div className="px-32 mt-20  md:flex">
+        <div className="px-12 md:px-32 mt-20  md:flex">
           <AboutMe />
           <div className="md:w-[50%] mt-10 md:mt-0">
             <Projects onHover={setHovered} />

@@ -3,15 +3,18 @@ import Navigation from "../components/Navigation";
 import { useQuery } from "convex/react";
 import { api } from "../../convex/_generated/api";
 import { BlogMarkdown } from "../generator/BlogMarkdown";
+import { useParams } from "react-router-dom";
+import { Id } from "convex/_generated/dataModel";
 
 const Blog: React.FC = () => {
-    const blogs = useQuery(api.blogs.get) ?? [];
+    const { id } = useParams() as { id: Id<"blog"> };
+    const blog = useQuery(api.blogs.getBlog, { blogId: id });
 
     return (
         <div className="w-[100vw] h-[100vh] flex flex-col">
             <Navigation />
-            <div className="px-32 w-[70%] 2xl:w-[50%] mx-auto">
-                {blogs.map((blog) => (
+            {blog &&
+                <div className="px-32 w-[70%] 2xl:w-[50%] mx-auto">
                     <BlogMarkdown
                         key={blog._id}
                         title={blog.title}
@@ -20,8 +23,8 @@ const Blog: React.FC = () => {
                         content={blog.contents}
                         _id={blog._id}
                     />
-                ))}
-            </div>
+                </div>
+            }
         </div>
     );
 };

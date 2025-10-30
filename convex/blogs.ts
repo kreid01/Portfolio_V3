@@ -8,6 +8,13 @@ export const get = query({
     },
 });
 
+export const getBlog = query({
+    args: { blogId: v.id("blog") },
+    handler: async (ctx, args) => {
+        return await ctx.db.get(args.blogId);
+    },
+});
+
 export const updateBlogContents = mutation({
     args: { id: v.id("blog"), contents: v.string() },
     handler: async (ctx, args) => {
