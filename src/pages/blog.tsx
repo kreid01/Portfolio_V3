@@ -14,7 +14,7 @@ const Blog: React.FC = () => {
         <div className="w-[100vw] h-[100vh] flex flex-col">
             <Navigation />
             {blog &&
-                <div className="px-32 w-[70%] 2xl:w-[50%] mx-auto">
+                <div className="px-12 w-[100%] md:px-32 2xl:w-[50%] mx-auto">
                     <BlogMarkdown
                         key={blog._id}
                         title={blog.title}
