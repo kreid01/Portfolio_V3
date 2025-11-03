@@ -14,7 +14,7 @@ const Blogs: React.FC = () => {
             <Navigation />
             <div className="px-12 w-[100%] md:px-32 2xl:w-[50%] mx-auto">
                 <Button onClick={async () => { await createBlog({ title: "", contents: "" }) }} size="sm" >
-                    New Blog Post+
+                    New Blog Post
                 </Button>
                 {blogs.map((blog) => (
                     <BlogMarkdown
