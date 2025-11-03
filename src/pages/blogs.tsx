@@ -12,7 +12,7 @@ const Blogs: React.FC = () => {
     return (
         <div className="w-[100vw] h-[100vh]  bg-white dark:bg-zinc-900 flex flex-col">
             <Navigation />
-            <div className="px-12 w-[100%] md:px-32 2xl:w-[50%] mx-auto">
+            <div className="px-12 w-[100%] lg:w-[80%] md:px-32 2xl:w-[50%] mx-auto">
                 <Button onClick={async () => { await createBlog({ title: "", contents: "" }) }} size="sm" >
                     New Blog Post
                 </Button>

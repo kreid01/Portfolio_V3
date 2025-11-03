@@ -12,6 +12,7 @@ import { TypographyMuted } from "./typography/TypographyMuted";
 import { Button } from "@/components/ui/button";
 import { useUser } from "@clerk/clerk-react";
 import { MarkdownEditor } from "./MarkdownEditor";
+import { Description } from "./typography/Description";
 
 const getMarkdown = (content: string): Markdown[] => {
     const result = (content ?? "").split("\n");
@@ -27,7 +28,7 @@ const getType = (line: string): string => {
     return "paragraph";
 }
 
-export const BlogMarkdown: React.FC<Blog> = ({ title, created, content, _id }) => {
+export const BlogMarkdown: React.FC<Blog> = ({ title, created, content, description, _id }) => {
     const [markdown, setMarkdown] = useState<Markdown[]>(getMarkdown(content ?? ''));
     const [isEditing, setIsEditing] = useState<boolean>(false);
 
@@ -58,6 +59,12 @@ export const BlogMarkdown: React.FC<Blog> = ({ title, created, content, _id }) =
         setBlogTitle(newTitle);
     }
 
+    const [blogDescription, setBlogDescription] = useState<string>(description);
+    const onDescriptionChange = (newDescription: string) => {
+        if (!isEditing) return;
+        setBlogDescription(newDescription);
+    }
+
     return (
         <div onClick={(e) => startEditing(e, true)} className="bg-stone-800 text-white my-10 relative roundedmd shadow-sm p-4 border-[1px] rounded-md">
             <div className="flex justify-end gap-4 mb-4">
@@ -65,6 +72,7 @@ export const BlogMarkdown: React.FC<Blog> = ({ title, created, content, _id }) =
                     <>
                         {_id && <UpdateBlogButton
                             title={blogTitle}
+                            description={blogDescription}
                             cancelEditing={cancelEditing} id={_id}
                             content={markdown.map(m => m.text).join("\n")} />}
                         <Button onClick={cancelEditing} size={"sm"} className="px-3 py-1">Cancel</Button>
@@ -75,6 +83,7 @@ export const BlogMarkdown: React.FC<Blog> = ({ title, created, content, _id }) =
             </div>
 
             <Header isEditing={isEditing} onTitleChange={onTitleChange} title={title} />
+            <Description isEditing={isEditing} onDescriptionChange={onDescriptionChange} description={blogDescription} />
             <div className="mt-4 space-y-2">
                 {(isEditing && isAdmin) ? <MarkdownEditor onChange={handleTextChange} text={markdown.map(m => m.text).join("\n")} /> :
                     markdown.map((item, i) => (

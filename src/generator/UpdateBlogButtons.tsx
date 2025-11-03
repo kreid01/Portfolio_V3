@@ -3,11 +3,13 @@ import { api } from "../../convex/_generated/api";
 import { Id } from "../../convex/_generated/dataModel";
 import { Button } from "@/components/ui/button";
 
-export const UpdateBlogButton = ({ id, content, title, cancelEditing }: { id: Id<"blog">, content: string, title: string, cancelEditing: () => void }) => {
+export const UpdateBlogButton = ({ id, content, title, description, cancelEditing }: {
+    id: Id<"blog">, content: string, title: string, description: string, cancelEditing: () => void
+}) => {
     const updateBlogContents = useMutation(api.blogs.updateBlogContents);
 
     const save = async () => {
-        await updateBlogContents({ id, contents: content, title: title });
+        await updateBlogContents({ id, contents: content, title: title, description: description });
         cancelEditing();
     }
 

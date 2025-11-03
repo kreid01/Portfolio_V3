@@ -16,10 +16,10 @@ export const getBlog = query({
 });
 
 export const updateBlogContents = mutation({
-    args: { id: v.id("blog"), contents: v.string(), title: v.string() },
+    args: { id: v.id("blog"), contents: v.string(), title: v.string(), description: v.string() },
     handler: async (ctx, args) => {
-        const { id, contents, title } = args;
-        await ctx.db.patch(id, { contents, title });
+        const { id, contents, title, description } = args;
+        await ctx.db.patch(id, { contents, title, description });
     },
 });
 
