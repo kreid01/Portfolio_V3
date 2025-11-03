@@ -7,7 +7,7 @@ export const MarkdownHeader: React.FC<Props> = ({ text }) => {
     const cleanText = text.slice(1).trim();
 
     return (
-        <h2 className="scroll-m-20 text-3xl font-extrabold tracking-tight text-balance">
+        <h2 className="scroll-m-20 text-2xl font-extrabold tracking-tight text-balance">
             {cleanText}
         </h2>
     );

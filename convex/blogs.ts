@@ -9,9 +9,12 @@ export const get = query({
 });
 
 export const getBlog = query({
-    args: { blogId: v.id("blog") },
+    args: { blogId: v.number() },
     handler: async (ctx, args) => {
-        return await ctx.db.get(args.blogId);
+        return await ctx.db
+            .query("blog")
+            .filter(q => q.eq(q.field("id"), args.blogId))
+            .first();
     },
 });
 
@@ -24,13 +27,16 @@ export const updateBlogContents = mutation({
 });
 
 export const createBlog = mutation({
-    args: {
-        contents: v.string(),
-        title: v.string()
-    },
-    handler: async (ctx, args) => {
-        const { contents, title } = args;
-        await ctx.db.insert("blog", { contents, title, created: new Date().toISOString(), description: "" });
+    handler: async (ctx) => {
+        const id = (await ctx.db.query("blog").collect()).length + 1;
+
+        await ctx.db.insert("blog", {
+            id: id,
+            contents: "",
+            title: "",
+            created: new Date().toISOString(),
+            description: "",
+        });
     },
 });
 

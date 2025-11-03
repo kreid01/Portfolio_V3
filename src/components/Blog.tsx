@@ -10,7 +10,7 @@ export interface Blog {
     content?: string;
     link?: string;
 
-    _id?: Id<"blog">;
+    id: number;
 }
 
 interface BlogProps extends Blog {
@@ -22,7 +22,7 @@ export const Blog: React.FC<BlogProps> = ({
     created,
     description,
     onHover,
-    _id
+    id
 }) => {
     const [hovered, setHovered] = useState(false);
 
@@ -32,7 +32,7 @@ export const Blog: React.FC<BlogProps> = ({
     };
 
     return (
-        <Link to={`/blog/${_id}`}
+        <Link to={`/blog/${id}`}
             onMouseEnter={() => handleHover(true)}
             onMouseLeave={() => handleHover(false)}
             className={`bg-stone-800 shadow-md text-white p-10 text-left flex-grow-0 w-full ml-auto transition-transform duration-300 hover:scale-110 ${hovered ? "z-20" : ""}`}

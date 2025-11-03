@@ -13,7 +13,7 @@ const Blogs: React.FC = () => {
         <div className="w-[100vw] min-h-[100vh] h-max  bg-white dark:bg-zinc-900 flex flex-col">
             <Navigation />
             <div className="px-12 w-[100%] lg:w-[80%] md:px-32 2xl:w-[50%] mx-auto">
-                <Button onClick={async () => { await createBlog({ title: "", contents: "" }) }} size="sm" >
+                <Button onClick={async () => { await createBlog() }} size="sm" >
                     New Blog Post
                 </Button>
                 {blogs.map((blog) => (
@@ -23,7 +23,7 @@ const Blogs: React.FC = () => {
                         description={blog.description}
                         created={blog.created}
                         content={blog.contents}
-                        _id={blog._id}
+                        id={blog.id}
                     />
                 ))}
             </div>

@@ -4,11 +4,10 @@ import { useQuery } from "convex/react";
 import { api } from "../../convex/_generated/api";
 import { BlogMarkdown } from "../generator/BlogMarkdown";
 import { useParams } from "react-router-dom";
-import { Id } from "convex/_generated/dataModel";
 
 const Blog: React.FC = () => {
-    const { id } = useParams() as { id: Id<"blog"> };
-    const blog = useQuery(api.blogs.getBlog, { blogId: id });
+    const { id } = useParams() as { id: string };
+    const blog = useQuery(api.blogs.getBlog, { blogId: parseInt(id) });
 
     return (
         <div className="w-[100vw] h-[100vh] flex flex-col">
@@ -21,7 +20,7 @@ const Blog: React.FC = () => {
                         description={blog.description}
                         created={blog.created}
                         content={blog.contents}
-                        _id={blog._id}
+                        id={blog.id}
                     />
                 </div>
             }
