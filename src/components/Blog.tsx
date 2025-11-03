@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { getFormattedDate } from "../utils/dateUtils";
-import { Id } from "../../convex/_generated/dataModel";
 import { Link } from "react-router-dom";
 
 export interface Blog {
