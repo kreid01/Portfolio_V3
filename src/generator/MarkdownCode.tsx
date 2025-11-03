@@ -1,34 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import { Markdown } from "./types/types";
-import { Textarea } from "@/components/ui/textarea";
 
-type Props = Extract<Markdown, { type: "code" }> & {
-    editing: boolean;
-    onChange?: (newText: string) => void;
-};
+type Props = Extract<Markdown, { type: "code" }> & {};
 
-export const MarkdownCode: React.FC<Props> = ({ text, editing = false, onChange }) => {
-    const [value, setValue] = useState(text);
-
-    const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-        setValue(e.target.value);
-        onChange?.(e.target.value);
-    };
-
-    if (editing) {
-        return (
-            <Textarea
-                value={value}
-                onChange={handleChange}
-                className="w-full p-2 rounded font-mono resize-none"
-                minRows={1}
-            />
-        );
-    }
+export const MarkdownCode: React.FC<Props> = ({ text }) => {
+    const cleanText = text.replace(/^```/, "").replace(/```$/, "").trim();
 
     return (
         <pre className="p-2 rounded text-sm overflow-x-auto">
-            <code>{value}</code>
+            <code>{cleanText}</code>
         </pre>
     );
 };

@@ -1,37 +1,39 @@
-import React, { useState } from "react";
-import { Markdown } from "./types/types";
-import { Textarea } from "@/components/ui/textarea";
+import React from "react";
+import { Markdown, BoldText, ItalicText } from "./types/types";
 
-type Props = Extract<Markdown, { type: "paragraph" }> & {
-    editing: boolean;
-    onChange?: (newText: string) => void;
-};
+type Props = Extract<Markdown, { type: "paragraph" }>;
 
-export const MarkdownParagraph: React.FC<Props> = ({ text, format, editing = false, onChange }) => {
-    const [value, setValue] = useState(text);
+function isBoldText(text: string): text is BoldText {
+    return /^\*\*(.+)\*\*$/.test(text);
+}
 
-    const style =
-        format === "bold"
-            ? "font-bold"
-            : format === "italic"
-                ? "italic"
-                : "font-normal";
+function isItalicText(text: string): text is ItalicText {
+    return /^\*(.+)\*$/.test(text);
+}
 
-    const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-        setValue(e.target.value);
-        onChange?.(e.target.value);
+export const MarkdownParagraph: React.FC<Props> = ({ text }) => {
+    const words = text.split(" ");
+
+    const getWordStyle = (word: string): { cleanWord: string; style: string } => {
+        if (isBoldText(word)) {
+            return { cleanWord: word.replace(/^\*\*(.+)\*\*$/, "$1"), style: "font-bold" };
+        }
+        if (isItalicText(word)) {
+            return { cleanWord: word.replace(/^\*(.+)\*$/, "$1"), style: "italic" };
+        }
+        return { cleanWord: word, style: "font-normal" };
     };
 
-    if (editing) {
-        return (
-            <Textarea
-                value={value}
-                onChange={handleChange}
-                className={`w-full ${style} p-2 rounded resize-none leading-7 [&:not(:first-child)]:mt-6`}
-                minRows={1}
-            />
-        );
-    }
-
-    return <p className={`${style} whitespace-pre-wrap leading-7 [&:not(:first-child)]:mt-6`}> {value} </p>
+    return (
+        <p className="whitespace-pre-wrap leading-7 [&:not(:first-child)]:mt-6">
+            {words.map((word, i) => {
+                const { cleanWord, style } = getWordStyle(word);
+                return (
+                    <span key={i} className={style}>
+                        {cleanWord}{" "}
+                    </span>
+                );
+            })}
+        </p>
+    );
 };

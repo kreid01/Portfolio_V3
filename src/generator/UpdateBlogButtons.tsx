@@ -1,18 +1,19 @@
 import { useMutation } from "convex/react";
 import { api } from "../../convex/_generated/api";
 import { Id } from "../../convex/_generated/dataModel";
-import { Markdown } from "./types/types";
 import { Button } from "@/components/ui/button";
 
-export const UpdateBlogButton = ({ id, content }: { id: Id<"blog">, content: Markdown[] }) => {
+export const UpdateBlogButton = ({ id, content, title, cancelEditing }: { id: Id<"blog">, content: string, title: string, cancelEditing: () => void }) => {
     const updateBlogContents = useMutation(api.blogs.updateBlogContents);
+
+    const save = async () => {
+        await updateBlogContents({ id, contents: content, title: title });
+        cancelEditing();
+    }
 
     const handleUpdate = async () => {
         try {
-            await updateBlogContents({
-                id,
-                contents: JSON.stringify(content)
-            });
+            await save();
             return
         } catch (err) {
             console.error("Error updating blog:", err);

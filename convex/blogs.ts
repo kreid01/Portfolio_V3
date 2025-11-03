@@ -16,9 +16,21 @@ export const getBlog = query({
 });
 
 export const updateBlogContents = mutation({
-    args: { id: v.id("blog"), contents: v.string() },
+    args: { id: v.id("blog"), contents: v.string(), title: v.string() },
     handler: async (ctx, args) => {
-        const { id, contents } = args;
-        await ctx.db.patch(id, { contents });
+        const { id, contents, title } = args;
+        await ctx.db.patch(id, { contents, title });
     },
 });
+
+export const createBlog = mutation({
+    args: {
+        contents: v.string(),
+        title: v.string()
+    },
+    handler: async (ctx, args) => {
+        const { contents, title } = args;
+        await ctx.db.insert("blog", { contents, title, created: new Date().toISOString(), description: "" });
+    },
+});
+

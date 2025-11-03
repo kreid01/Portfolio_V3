@@ -1,12 +1,19 @@
-type TextBlock = { text: string; format: "normal" | "bold" | "italic" };
+type Header = `#${string}`;
+type ListItem = `- ${string}`;
+
+export type BoldText = `**${string}**`;
+export type ItalicText = `*${string}*`;
+export type LinkText = `$$${string}$$`
+export type PlainText = Exclude<string, BoldText | ItalicText | LinkText>;
+type CodeText = `\`\`\`${string}\`\`\``;
+
 
 export type Markdown =
-    | ({ type: "paragraph" } & TextBlock)
-    | ({ type: "list" } & TextBlock)
-    | ({ type: "header" } & TextBlock)
-    | { type: "image"; width: "small" | "medium" | "large"; src: string }
-    | { type: "link"; href: string; text: string }
-    | { type: "code"; text: string };
+    | ({ type: "paragraph" } & { text: PlainText | BoldText | ItalicText; format: "normal" | "bold" | "italic" })
+    | ({ type: "list" } & { text: ListItem })
+    | ({ type: "header" } & { text: Header })
+    | { type: "link"; href: string; text: LinkText }
+    | { type: "code"; text: CodeText };
 
 
 export type User = {
