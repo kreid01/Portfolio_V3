@@ -20,6 +20,6 @@ export const Description: React.FC<DescriptionProps> = ({ description, isEditing
             placeholder="description"
             value={value}
             onChange={(e) => onChange(e.target.value)}
-            className="w-full text-center !text-lg font-extrabold tracking-tight text-balance p-2 border rounded"
+            className="w-full !text-lg font-normal text-center tracking-tight text-balance p-2 border rounded"
         />
 }
