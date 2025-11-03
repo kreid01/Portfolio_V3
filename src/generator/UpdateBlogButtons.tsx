@@ -1,10 +1,9 @@
 import { useMutation } from "convex/react";
 import { api } from "../../convex/_generated/api";
-import { Id } from "../../convex/_generated/dataModel";
 import { Button } from "@/components/ui/button";
 
 export const UpdateBlogButton = ({ id, content, title, description, cancelEditing }: {
-    id: Id<"blog">, content: string, title: string, description: string, cancelEditing: () => void
+    id: number, content: string, title: string, description: string, cancelEditing: () => void
 }) => {
     const updateBlogContents = useMutation(api.blogs.updateBlogContents);
 

@@ -19,12 +19,27 @@ export const getBlog = query({
 });
 
 export const updateBlogContents = mutation({
-    args: { id: v.id("blog"), contents: v.string(), title: v.string(), description: v.string() },
+    args: {
+        id: v.number(),
+        contents: v.string(),
+        title: v.string(),
+        description: v.string(),
+    },
     handler: async (ctx, args) => {
         const { id, contents, title, description } = args;
-        await ctx.db.patch(id, { contents, title, description });
+        const blog = await ctx.db
+            .query("blog")
+            .filter(q => q.eq(q.field("id"), id))
+            .first();
+
+        if (!blog) {
+            throw new Error(`Blog with id ${id} not found`);
+        }
+
+        await ctx.db.patch(blog._id, { contents, title, description });
     },
 });
+
 
 export const createBlog = mutation({
     handler: async (ctx) => {

@@ -28,7 +28,7 @@ const getType = (line: string): string => {
     return "paragraph";
 }
 
-export const BlogMarkdown: React.FC<Blog> = ({ title, created, content, description, _id }) => {
+export const BlogMarkdown: React.FC<Blog> = ({ title, created, content, description, id }) => {
     const [markdown, setMarkdown] = useState<Markdown[]>(getMarkdown(content ?? ''));
     const [isEditing, setIsEditing] = useState<boolean>(false);
 
@@ -70,10 +70,10 @@ export const BlogMarkdown: React.FC<Blog> = ({ title, created, content, descript
             <div className="flex justify-end gap-4 mb-4">
                 {isEditing && isAdmin &&
                     <>
-                        {_id && <UpdateBlogButton
+                        {id && <UpdateBlogButton
                             title={blogTitle}
                             description={blogDescription}
-                            cancelEditing={cancelEditing} id={_id}
+                            cancelEditing={cancelEditing} id={id}
                             content={markdown.map(m => m.text).join("\n")} />}
                         <Button onClick={cancelEditing} size={"sm"} className="px-3 py-1">Cancel</Button>
                     </>
