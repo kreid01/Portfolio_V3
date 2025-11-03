@@ -15,18 +15,11 @@ export const Description: React.FC<DescriptionProps> = ({ description, isEditing
         onDescriptionChange(newDescription);
     }
 
-    return (
-        isEditing ? (
-            <Input
-                placeholder="description"
-                value={value}
-                onChange={(e) => onChange(e.target.value)}
-                className="w-full text-center !text-lg font-extrabold tracking-tight text-balance p-2 border rounded"
-            />
-        ) : (
-            <p className="scroll-m-20 text-center text-lg font-extrabold tracking-tight text-balance">
-                {value}
-            </p>
-        )
-    )
+    return isEditing &&
+        <Input
+            placeholder="description"
+            value={value}
+            onChange={(e) => onChange(e.target.value)}
+            className="w-full text-center !text-lg font-extrabold tracking-tight text-balance p-2 border rounded"
+        />
 }
