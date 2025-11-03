@@ -17,6 +17,7 @@ export const Header: React.FC<HeaderProps> = ({ title, isEditing, onTitleChange 
     return (
         isEditing ? (
             <Input
+                placeholder="title"
                 value={value}
                 onChange={(e) => onChange(e.target.value)}
                 className="w-full text-center !text-4xl font-extrabold tracking-tight text-balance p-2 border rounded"

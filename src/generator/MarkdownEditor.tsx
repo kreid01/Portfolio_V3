@@ -16,6 +16,7 @@ export const MarkdownEditor: React.FC<Props> = ({ text, onChange }) => {
 
     return (
         <Textarea
+            placeholder="markdown"
             value={value}
             onChange={handleChange}
             className={`w-full p-2 rounded resize-none leading-7 [&:not(:first-child)]:mt-6`}
